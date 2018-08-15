@@ -1,17 +1,26 @@
-package com.netas.TaskReminder.Task;
+package com.netas.TaskReminder.Service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.netas.TaskReminder.DAO.ITaskRepository;
+import com.netas.TaskReminder.DTO.Task;
 
 @Service
-public class TaskService {
+public class TaskService implements ITaskService {
 
   @Autowired
-  private TaskRepository taskRepository;
+  private ITaskRepository taskRepository;
 
   public List<Task> getAllTasks() {
     return (List<Task>) taskRepository.findAll();
+  }
+  @Override
+  public List<Task> findAll() {
+
+      List<Task> tasks = (List<Task>) taskRepository.findAll();
+      
+      return tasks;
   }
 
   public Task getTaskById(Integer id) {
@@ -37,5 +46,6 @@ public class TaskService {
   public void deleteAllTask() {
     taskRepository.deleteAll();
   }
+  
 
 }
