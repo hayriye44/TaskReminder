@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +15,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import javax.persistence.ForeignKey;
 
 @Entity
 @Table(name = "\"user\"")
@@ -47,12 +45,13 @@ public class User implements Serializable {
 
 
 
-  @ManyToOne(targetEntity = Role.class, fetch = FetchType.EAGER)
-  @JoinColumn(name = "role_id", foreignKey = @ForeignKey(foreignKeyDefinition = "role_fk"))
+  
+  
+  @ManyToOne
+  @JoinColumn (name="role_id")
   @JsonBackReference
   private Role role;
   // Her kullanıcının bir rolü var.
-
 
 
   public User(String userName, String userLastname, String mail) {
