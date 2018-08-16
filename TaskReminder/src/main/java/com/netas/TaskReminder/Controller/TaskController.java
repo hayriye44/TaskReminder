@@ -8,10 +8,11 @@ import com.netas.TaskReminder.DAO.ITaskRepository;
 public class TaskController {
   @Autowired
   ITaskRepository repository;
+
   @RequestMapping("/findbylastname")
-  public String fetchDataByLastName(@RequestParam("lastname") String lastName){
-      String result = "";
-      
-      return result;
-}
+  public String fetchDataByLastName(@RequestParam("lastname") String lastName) {
+    String result = "";
+
+    return result;
+  }
 }
