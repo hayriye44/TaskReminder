@@ -15,12 +15,13 @@ public class TaskService implements ITaskService {
   public List<Task> getAllTasks() {
     return (List<Task>) taskRepository.findAll();
   }
+
   @Override
   public List<Task> findAll() {
 
-      List<Task> tasks = (List<Task>) taskRepository.findAll();
-      
-      return tasks;
+    List<Task> tasks = (List<Task>) taskRepository.findAll();
+
+    return tasks;
   }
 
   public Task getTaskById(Integer id) {
@@ -46,6 +47,6 @@ public class TaskService implements ITaskService {
   public void deleteAllTask() {
     taskRepository.deleteAll();
   }
-  
+
 
 }
