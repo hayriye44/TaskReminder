@@ -28,7 +28,30 @@ public class Authorization implements Serializable {
   @JoinTable(name = "roles_authorizations",
       joinColumns = @JoinColumn(name = "authorization_id", referencedColumnName = "authorization_id"),
       inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
-  private Set<Role> people = new HashSet<Role>();
+  private Set<Role> roles = new HashSet<Role>();
+  
+
+  public Authorization(String authorizationName, Set<Role> roles) {
+    super();
+    this.authorizationName = authorizationName;
+    this.roles = roles;
+  }
+
+  public String getAuthorizationName() {
+    return authorizationName;
+  }
+
+  public void setAuthorizationName(String authorizationName) {
+    this.authorizationName = authorizationName;
+  }
+
+  public Set<Role> getRoles() {
+    return roles;
+  }
+
+  public void setRoles(Set<Role> roles) {
+    this.roles = roles;
+  }
   
   
   
