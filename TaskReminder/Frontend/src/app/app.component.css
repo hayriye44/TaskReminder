@@ -22,6 +22,7 @@ h2{
 
 .form{
   margin: 9px 8px;
+  padding-bottom: 6px;
   font-family: Calibri,sans-serif;
   border: 1px solid #dddddd;
   border-radius: 8px;

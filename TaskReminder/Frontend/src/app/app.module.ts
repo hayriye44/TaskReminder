@@ -3,21 +3,22 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {LoginScreenComponent} from './LoginScreen/login_screen.component';
-import {Route} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
-// const appRoutes: Route = [
-//   {
-//     path: '',
-//     component: LoginScreenComponent,
-//   }
-// ];
+const appRoutes: Routes = [
+  {path: '', component: AppComponent},
+  {
+    path: 'login',
+    component: LoginScreenComponent,
+  }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, LoginScreenComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

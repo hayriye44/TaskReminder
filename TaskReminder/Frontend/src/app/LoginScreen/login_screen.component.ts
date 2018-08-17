@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 
 @Component({
   selector: 'app-login',
-  templateUrl: 'app/LoginScreen/login_screen.component.html',
-  styleUrls: ['app/LoginScreen/login_screen.component.css']
+  templateUrl: 'login_screen.component.html',
+  styleUrls: ['login_screen.component.css']
 })
+
 
 export class LoginScreenComponent {
 
