@@ -17,78 +17,85 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "\"user\"")
+@Table(name = "kullanici")
 public class User implements Serializable {
   private static final long serialVersionUID = -3009157732242241606L;
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "user_id")
   private long id;
-  @Column(name = "username")
-  private String username;
+  
   @Column(name = "user_full_name")
   private String userFullName;
+  @Column(name = "sifre")
+  private String sifre;
   @Column(name = "mail")
   private String mail;
-
-
 
   @ManyToMany(cascade = CascadeType.ALL)
   @JsonBackReference
   @JoinTable(name = "users_tasks",
-      joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
-      inverseJoinColumns = @JoinColumn(name = "task_id", referencedColumnName = "task_id"))
+      joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"))
   private Set<Task> tasks = new HashSet<Task>();
   // tasks lar set metoduyla direk gelicek constructer metoda yazmaya gerek yok.
   // ManyToMany ilişki olacak.Bunun için UserWorkingTaskla Manytoone yaparım
   // UserWorkingTaskla task sınıfı arasında onetomany sonuc manytomany olur
-
-
-
-  
-  
   @ManyToOne
   @JoinColumn (name="role_id")
   @JsonBackReference
   private Role role;
   // Her kullanıcının bir rolü var.
-  public User(String username, String userFullName, String mail, Set<Task> tasks, Role role) {
+  public User(long id, String userFullName, String sifre, String mail, Set<Task> tasks) {
     super();
-    this.username = username;
+    this.id = id;
     this.userFullName = userFullName;
+    this.sifre = sifre;
+    this.mail = mail;
+    this.tasks = tasks;
+  }
+  
+  public User(long id, String userFullName, String sifre, String mail) {
+    super();
+    this.id = id;
+    this.userFullName = userFullName;
+    this.sifre = sifre;
+    this.mail = mail;
+  }
+
+  public User(String userFullName, String sifre, String mail) {
+    super();
+    this.userFullName = userFullName;
+    this.sifre = sifre;
+    this.mail = mail;
+  }
+  
+
+  public User(String userFullName, String sifre, String mail, Set<Task> tasks, Role role) {
+    super();
+    this.userFullName = userFullName;
+    this.sifre = sifre;
     this.mail = mail;
     this.tasks = tasks;
     this.role = role;
   }
-  
-  
-  public User(String username, String userFullName, String mail, Role role) {
-    super();
-    this.username = username;
-    this.userFullName = userFullName;
-    this.mail = mail;
-    this.role = role;
-  }
 
-
-  public User(String username, String userFullName, String mail) {
-    super();
-    this.username = username;
-    this.userFullName = userFullName;
-    this.mail = mail;
+  public long getId() {
+    return id;
   }
-
-  public String getUsername() {
-    return username;
-  }
-  public void setUsername(String username) {
-    this.username = username;
+  public void setId(long id) {
+    this.id = id;
   }
   public String getUserFullName() {
     return userFullName;
   }
   public void setUserFullName(String userFullName) {
     this.userFullName = userFullName;
+  }
+  public String getSifre() {
+    return sifre;
+  }
+  public void setSifre(String sifre) {
+    this.sifre = sifre;
   }
   public String getMail() {
     return mail;
@@ -110,9 +117,13 @@ public class User implements Serializable {
   }
   @Override
   public String toString() {
-    return "User [username=" + username + ", userFullName=" + userFullName + ", mail=" + mail + "]";
+    return "User [id=" + id + ", userFullName=" + userFullName + ", sifre=" + sifre + ", mail="
+        + mail + ", tasks=" + tasks + ", role=" + role + "]";
   }
-
+  public User() {
+    super();
+  }
+ 
 
 
 

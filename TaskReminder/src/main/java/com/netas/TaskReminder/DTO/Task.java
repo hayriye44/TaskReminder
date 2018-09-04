@@ -20,7 +20,6 @@ public class Task implements Serializable {
   private static final long serialVersionUID = -3009157732242241606L;
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "task_id")
   private long id;
   @Column(name = "title")
   private String title;
@@ -36,8 +35,8 @@ public class Task implements Serializable {
 
   @ManyToMany
   @JoinTable(name = "users_tasks",
-      joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "task_id"),
-      inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
+      joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
   private Set<User> users = new HashSet<User>();
 
   
@@ -108,6 +107,45 @@ public class Task implements Serializable {
   public void setTaskDuration(Integer taskDuration) {
     this.taskDuration = taskDuration;
   }
+
+  public Task(long id, String title, String description, boolean taskStatus, Date createDate,
+      Integer taskDuration) {
+    super();
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.taskStatus = taskStatus;
+    this.createDate = createDate;
+    this.taskDuration = taskDuration;
+  }
+
+  public Task(long id, String title, String description, boolean taskStatus, Date createDate,
+      Integer taskDuration, Set<User> users) {
+    super();
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.taskStatus = taskStatus;
+    this.createDate = createDate;
+    this.taskDuration = taskDuration;
+    this.users = users;
+  }
+
+  public Task(String title, String description, boolean taskStatus, Date createDate,
+      Integer taskDuration) {
+    super();
+    this.title = title;
+    this.description = description;
+    this.taskStatus = taskStatus;
+    this.createDate = createDate;
+    this.taskDuration = taskDuration;
+  }
+
+  public Task() {
+    super();
+  }
+
+  
 
 
 
