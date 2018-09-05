@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.netas.TaskReminder.DTO.Task;
 
 
-public interface ITaskRepository extends CrudRepository<Task, Integer> {
+public interface ITaskRepository extends JpaRepository<Task, Integer> {
   
 
 }

@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import com.netas.TaskReminder.DTO.User;
 @Repository
-public interface IUserRepository extends CrudRepository<User, Integer> {
+public interface IUserRepository extends JpaRepository<User, Integer> {
   
 
 }

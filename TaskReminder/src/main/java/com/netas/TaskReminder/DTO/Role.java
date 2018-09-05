@@ -48,6 +48,10 @@ public class Role implements Serializable {
     return users;
   }
 
+  public Role() {
+    super();
+  }
+
   public Role(String roleName, Set<User> users, Set<Authorization> authorizations) {
     super();
     this.roleName = roleName;

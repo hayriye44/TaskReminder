@@ -52,6 +52,10 @@ public class Authorization implements Serializable {
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
+
+  public Authorization() {
+    super();
+  }
   
   
   

@@ -22,6 +22,7 @@ public class User implements Serializable {
   private static final long serialVersionUID = -3009157732242241606L;
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id", unique = true, nullable = false)
   private long id;
   
   @Column(name = "user_full_name")
@@ -36,7 +37,7 @@ public class User implements Serializable {
   @JoinTable(name = "users_tasks",
       joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"))
-  private Set<Task> tasks = new HashSet<Task>();
+  private Set<Task> tasks= new HashSet<Task>();
   // tasks lar set metoduyla direk gelicek constructer metoda yazmaya gerek yok.
   // ManyToMany ilişki olacak.Bunun için UserWorkingTaskla Manytoone yaparım
   // UserWorkingTaskla task sınıfı arasında onetomany sonuc manytomany olur
