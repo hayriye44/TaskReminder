@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {UserServices} from '../user/user.services';
+import {UserService} from '../_services/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login_screen.component.css'],
-  providers: [UserServices]
+  providers: [UserService]
 })
 
 export class LoginComponent {}
