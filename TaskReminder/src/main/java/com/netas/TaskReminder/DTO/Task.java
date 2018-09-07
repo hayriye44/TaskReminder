@@ -20,62 +20,137 @@ public class Task implements Serializable {
   private static final long serialVersionUID = -3009157732242241606L;
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "task_id")
+
+  @Column(name = "id", unique = true, nullable = false)
   private long id;
+  @Column(name = "title")
+  private String title;
   @Column(name = "description")
   private String description;
   @Column(name = "task_status")
-  private String taskStatus;
+  private boolean taskStatus;
   @Column(name = "create_date")
   private Date createDate;
-  @Column(name = "process_time")
-  private Integer procressTime;
+  @Column(name = "task_duration")
+  private Integer taskDuration;
 
 
   @ManyToMany
   @JoinTable(name = "users_tasks",
-      joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "task_id"),
-      inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
-  private Set<User> people = new HashSet<User>();
+      joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+  private Set<User> users = new HashSet<User>();
 
-  public Task(String description, String taskStatus, Date createDate, Integer procressTime) {
+  
+  public Task(String title, String description, boolean taskStatus, Date createDate,
+      Integer taskDuration, Set<User> users) {
     super();
+    this.title = title;
     this.description = description;
     this.taskStatus = taskStatus;
     this.createDate = createDate;
-    this.procressTime = procressTime;
+    this.taskDuration = taskDuration;
+    this.users = users;
   }
+
+  public Set<User> getUsers() {
+    return users;
+  }
+
+  public void setUsers(Set<User> users) {
+    this.users = users;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
 
   public String getDescription() {
     return description;
   }
 
+
   public void setDescription(String description) {
     this.description = description;
   }
 
-  public String getTaskStatus() {
+
+  public boolean isTaskStatus() {
     return taskStatus;
   }
 
-  public void setTaskStatus(String taskStatus) {
+
+  public void setTaskStatus(boolean taskStatus) {
     this.taskStatus = taskStatus;
   }
+
 
   public Date getCreateDate() {
     return createDate;
   }
 
+
   public void setCreateDate(Date createDate) {
     this.createDate = createDate;
   }
 
-  public Integer getProcressTime() {
-    return procressTime;
+
+  public Integer getTaskDuration() {
+    return taskDuration;
   }
 
-  public void setProcressTime(Integer procressTime) {
-    this.procressTime = procressTime;
+
+  public void setTaskDuration(Integer taskDuration) {
+    this.taskDuration = taskDuration;
   }
 
+  public Task(long id, String title, String description, boolean taskStatus, Date createDate,
+      Integer taskDuration) {
+    super();
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.taskStatus = taskStatus;
+    this.createDate = createDate;
+    this.taskDuration = taskDuration;
+  }
+
+  public Task(long id, String title, String description, boolean taskStatus, Date createDate,
+      Integer taskDuration, Set<User> users) {
+    super();
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.taskStatus = taskStatus;
+    this.createDate = createDate;
+    this.taskDuration = taskDuration;
+    this.users = users;
+  }
+
+  public Task(String title, String description, boolean taskStatus, Date createDate,
+      Integer taskDuration) {
+    super();
+    this.title = title;
+    this.description = description;
+    this.taskStatus = taskStatus;
+    this.createDate = createDate;
+    this.taskDuration = taskDuration;
+  }
+
+  public Task() {
+    super();
+  }
+
+  
+
+
+
+
+  
 }
