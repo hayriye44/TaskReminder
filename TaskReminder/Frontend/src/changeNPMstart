@@ -1,0 +1,19 @@
+To change npm build and start settings:
+  replace the scripts at the package.json file with following code.
+
+"scripts": {
+
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+
+
+  ***ORIGINAL CODE***
+  "scripts": {
+      "ng": "ng",
+      "start": "ng serve",
+      "build": "ng build",
+      "test": "ng test",
+      "lint": "ng lint",
+      "e2e": "ng e2e",
+    },
