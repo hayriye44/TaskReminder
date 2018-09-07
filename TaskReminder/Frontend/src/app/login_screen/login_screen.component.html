@@ -7,9 +7,9 @@
       <div class="form-group ">
         <label for="username">Username </label>
         <input id="username" formControlName="username" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && f.username.errors }"  type="text" #username>
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-          <div *ngIf="f.username.errors.required">Username is required</div>
+               [ngClass]="{ 'is-invalid': submitted && formControl.username.errors }" type="text" #username>
+        <div *ngIf="submitted && formControl.username.errors" class="invalid-feedback">
+          <div *ngIf="formControl.username.errors.required">Username is required</div>
         </div>
       </div>
 
@@ -18,7 +18,8 @@
         <input class="form-control" id="password" type="password" name="password" value="" #pass>
       </div>
       <div align="right">
-        <button class="btn btn-primary " (click)="loginUser(username,pass)">Login</button>
+        <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+        <button [disabled]="loading" class="btn btn-primary">Login</button>
       </div>
     </form>
   </div>

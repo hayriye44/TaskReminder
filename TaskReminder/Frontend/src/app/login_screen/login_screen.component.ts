@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 import {AuthenticationService} from '../_services/authentication.service';
 import {AlertService} from '../_services/alert.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-screen',
@@ -35,7 +35,7 @@ export class LoginScreenComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get formControl() { return this.loginForm.controls; }
 
   onSubmit() {
     this.submitted = true;
@@ -46,7 +46,7 @@ export class LoginScreenComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    this.authenticationService.login(this.formControl.username.value, this.formControl.password.value)
     .pipe(first())
     .subscribe(
       data => {
@@ -58,11 +58,11 @@ export class LoginScreenComponent implements OnInit {
       });
   }
 
-  public loginUser(nameElement: any, passElement: any): Boolean {
-    const newUser: User = new User(0, nameElement.value, passElement.value);
-    this.loggedIn.emit(newUser);
-
-    return false;
-}
+//   public loginUser(nameElement: any, passElement: any): Boolean {
+//     const newUser: User = new User(0, nameElement.value, passElement.value);
+//     this.loggedIn.emit(newUser);
+//
+//     return false;
+// }
 
 }

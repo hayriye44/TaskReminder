@@ -5,6 +5,7 @@ import {LoginComponent} from './login_screen/login.component';
 import {LoginScreenComponent} from './login_screen/login_screen.component';
 import {AuthGuard} from './_guards/auth.guard';
 import {TaskComponent} from './tasks/task.component';
+import {RegisterComponent} from './register/register.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full',  canActivate: [AuthGuard] },
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
       {path: '', component: LoginScreenComponent}]
   },
   // {path: 'tasks', component: TaskComponent},
+  {path: 'register', component: RegisterComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '/home' }
 ];
