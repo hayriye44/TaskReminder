@@ -1,4 +1,8 @@
-h1 {
-  color: blue;
-  font-size: 150%;
+h1{
+  font-family: Calibri, serif;
+  color: white;
+  margin: 10px;
+  padding: 5px;
+  background-color: rgba(50,150,250,0.6);
+  border-radius: 5px;
 }

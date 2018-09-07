@@ -300,3 +300,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+TaskReminder/src/main/resources/application\.properties
