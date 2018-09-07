@@ -1,3 +1,4 @@
+// Following row added to define global 'config' variable
 ///<reference path="../../../typings.d.ts"/>
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';

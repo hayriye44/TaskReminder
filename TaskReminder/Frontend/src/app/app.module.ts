@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {LoginScreenComponent} from './login_screen/login_screen.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -16,6 +15,7 @@ import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import {ErrorInterceptor} from './_helpers/error.interceptor';
 import {AlertComponent} from './_directives/alert.component';
 import {TaskComponent} from './tasks/task.component';
+import {RegisterComponent} from './register/register.component';
 
 
 @NgModule({
@@ -25,7 +25,8 @@ import {TaskComponent} from './tasks/task.component';
     HomeComponent,
     LoginComponent,
     LoginScreenComponent,
-    // TaskComponent
+    // TaskComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
