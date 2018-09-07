@@ -21,7 +21,7 @@ public class TaskRepositoryJpaImp implements TaskRepository {
 
   @Override
   public List<Task> findAll() {
-      return entityManager.createQuery("from task", Task.class).getResultList();
+      return entityManager.createQuery("From Task as atcl ORDER BY atcl.id", Task.class).getResultList();
   }
 
   @Override

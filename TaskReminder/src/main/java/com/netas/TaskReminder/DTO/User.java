@@ -17,17 +17,16 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "kullanici")
+@Table(name = "users")
 public class User implements Serializable {
   private static final long serialVersionUID = -3009157732242241606L;
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id", unique = true, nullable = false)
   private long id;
   
-  @Column(name = "user_full_name")
+  @Column(name = "username")
   private String userFullName;
-  @Column(name = "sifre")
+  @Column(name = "password")
   private String sifre;
   @Column(name = "mail")
   private String mail;

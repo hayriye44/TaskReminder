@@ -26,11 +26,12 @@ import com.netas.TaskReminder.DTO.Authorization;
 import com.netas.TaskReminder.DTO.Role;
 import com.netas.TaskReminder.DTO.Task;
 import com.netas.TaskReminder.DTO.User;
-import com.netas.TaskReminder.Service.RoleService;
 import com.netas.TaskReminder.Service.jpaService.UserService;
 import com.netas.TaskReminder.exception.InternalServerException;
 import com.netas.TaskReminder.exception.UserNotFoundException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.servlet.ModelAndView;
+@RequestMapping("/user")
 @RestController
 public class UserController {
 
@@ -48,11 +49,10 @@ public class UserController {
       List<User> users = userService.findUsers();
       return ResponseEntity.ok(users);
   }
-  //users metodu ile findall metodu aynı işi yapıyor.findall hazır jpa repositoriyle users kendi yazdığım service metodu
+  //users metodu ile findall metodu aynı işi yapıyor.users  hazır jpa repositoriyle findall kendi yazdığım service metodu
   @RequestMapping("/findall")
   public String findAll(){
       String result = "";
-      System.out.println("başarılı");
 
       for(User cust : userRepository.findAll()){
           result += cust.toString() + "<br>";
@@ -67,18 +67,6 @@ public class UserController {
           return ResponseEntity.ok(user);
       } catch (UserNotFoundException ex) {
           return ResponseEntity.notFound().build();
-      }
-  }
-  //çalışmıyo saveUser la kaydediyom
-  @RequestMapping(method = RequestMethod.POST, value = "/user")
-  public ResponseEntity<URI> createUser(@RequestBody User user) {
-      try {
-          userService.createUser(user);
-          Long id = user.getId();
-          URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
-          return ResponseEntity.created(location).build();
-      } catch (Exception ex) {
-          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
       }
   }
   @RequestMapping( value ="/savesave")
@@ -116,13 +104,20 @@ public class UserController {
           return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
       }
   }
-  @PutMapping("article")
-  public ResponseEntity<User> updateArticle(@RequestBody User article) {
-      userService.updateUser(article);
-      return new ResponseEntity<User>(article, HttpStatus.OK);
+
+  //çalışmıyo saveUser la kaydediyom
+  @RequestMapping(method = RequestMethod.POST, value = "/user")
+  public ResponseEntity<URI> createUser(@RequestBody User user) {
+      try {
+          userService.createUser(user);
+          Long id = user.getId();
+          URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
+          return ResponseEntity.created(location).build();
+      } catch (Exception ex) {
+          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+      }
   }
   @RequestMapping( value ="/saveUser")
- 
   public String createUser()
   { Date simdikiZaman = new Date();
     User hayriye=new User("Hatice","asd","h@gmail.com");
@@ -167,12 +162,6 @@ public class UserController {
     Set<Authorization> authorizations=new HashSet<Authorization>();
     authorizations.add(yetki1);
     role.setAuthorizations(authorizations);
-    
-    
-    
-    
-   
-
     return "done";
     
   }/*

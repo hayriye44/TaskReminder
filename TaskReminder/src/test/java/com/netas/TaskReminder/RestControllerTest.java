@@ -97,19 +97,20 @@ public class RestControllerTest {
 
      restTemplate = new RestTemplate();
       Date simdikiZaman = new Date();
-     User user = new User();
+     User user = new User("Hayriye","cingöz","j@hmail");
+    /*
       user.setUserFullName("Hayriye");
       user.setSifre("Cingöz");
-      user.setMail("h@gmail.com");
-      Task task=new Task("İşsiz","controller deneme",false,simdikiZaman,5);
+      user.setMail("h@gmail.com");*/
+      /*Task task=new Task("İşsiz","controller deneme",false,simdikiZaman,5);
       Task task2=new Task("Angular çalışma","sayfalar arası geçiş",false,simdikiZaman,1);
       Set<Task> tasks = new HashSet<Task>();
       tasks.add(task);
       tasks.add(task2);
-      user.setTasks(tasks);
+      user.setTasks(tasks);*/
 
       RestTemplate restTemplate = new RestTemplate();
-      URI location = restTemplate.postForLocation("http://localhost:9090/savesave", user);
+      URI location = restTemplate.postForLocation("http://localhost:9090/user/user", user);
 
       User user2 = restTemplate.getForObject(location, User.class);
 

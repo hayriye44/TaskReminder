@@ -48,6 +48,14 @@ public class Role implements Serializable {
     return users;
   }
 
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
   public Role() {
     super();
   }
